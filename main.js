@@ -9,10 +9,10 @@ const uuidv4 = require('uuid/v4');
 
 
 const conn = mysql.createConnection({
-    host: 'localhost',
-    user: 'Bill',
-    port: '8889',
-    password: 'react95818',
+    host: '',
+    user: '',
+    port: '',
+    password: '',
     database: 'react_project',
     dateStrings: true,
 })
@@ -23,7 +23,6 @@ app.use(bodyParser.json());
 
 
 const storage = multer.diskStorage({   destination: "./uploads/",   filename: function (req, file, cb) {     
-        console.log("file " + JSON.stringify(file))
         cb(null, file.originalname);             
     },
 });
@@ -89,8 +88,6 @@ app.post('/api_login', (req, res) => {
 
             if (row.length > 0) {
                 res.send({ 'success': true, 'message': row[0].account });
-                console.log("---" + row[0].password);
-
             }
             else {
                 res.send({ 'success': false, 'message': 'User not found. please try again' });
